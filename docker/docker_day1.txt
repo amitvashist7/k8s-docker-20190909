@@ -125,3 +125,175 @@
   125  cd docker/
   126  ls
   127  history > docker_day1.txt 
+    1  git clone https://github.com/amitvashist7/k8s-docker-20190909.git
+    2  ls
+    3  cd k8s-docker-20190909/
+    4  apt-get update ; apt-get install     apt-transport-https     ca-certificates     curl     gnupg-agent     software-properties-common -y 
+    5  curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
+    6  add-apt-repository    "deb [arch=amd64] https://download.docker.com/linux/ubuntu \
+    7     $(lsb_release -cs) \
+    8     stable"
+    9  apt-get update; apt-get install docker-ce docker-ce-cli containerd.io -y 
+   10  docker version 
+   11  docker run busybox echo "Welcome to Docker Demo."
+   12  docker ps 
+   13  docker ps -a
+   14  mkdir docker
+   15  history > docker/docker_day1.txt
+   16  git add . ; git commit -m "Dcoker History"; git push origin master 
+   17  docker images
+   18  docker pull ubuntu:16.04
+   19  docker images
+   20  docker pull ubuntu
+   21  docker images
+   22  docker search ubuntu 
+   23  docker pull ubuntu:18.04
+   24  docker images
+   25  docker pull ubuntu:18.09
+   26  docker images
+   27  docker images 
+   28  docker run ubuntu:16.04 "nettools -tulnp"
+   29  docker run ubuntu:16.04 "netstat -tulnp"
+   30  docker ps 
+   31  docker ps -a
+   32  uname  -a 
+   33  docker run ubuntu:16.04 "uname  -a"
+   34  docker run -it ubuntu:16.04
+   35  docker run ubuntu:16.04 uname -a
+   36  docker run ubuntu:18.04 uname -a
+   37  uname -a 
+   38  cat /etc/*-release
+   39  docker run ubuntu:16.04 cat /etc/*-release
+   40  docker run ubuntu:18.04 cat /etc/*-release
+   41  docker images 
+   42  docker run -it busybox
+   43  docker run -it busybox /bin/bash
+   44  docker run -it ubuntu
+   45  docker run -d busybox 
+   46  docker ps 
+   47  docker run -itd busybox 
+   48  docker ps 
+   49  docker attach 44140cf63258        
+   50  docker ps 
+   51  docker attach 44140cf63258        
+   52  docker ps 
+   53  docker attach 44140cf63258        
+   54  docker ps 
+   55  docker start 44140cf63258
+   56  docker ps 
+   57  docker attach 44140cf63258        
+   58  ls
+   59  docker ps -a 
+   60  docker ps 
+   61  docker ps -l
+   62  docker run -itd --name busybox-01 busybox 
+   63  docker ps 
+   64  docker ps -l
+   65  docker run -itd --name busybox-02 busybox 
+   66  docker ps -l
+   67  docker inspect $(docker ps -l)
+   68  docker inspect $(docker ps -ql)
+   69  docker ps -l
+   70  docker ps -lq
+   71  docker ps -l
+   72  docker ps -l | awk -F" " '{print $6}'
+   73  docker ps -l 
+   74  docker inspect $(docker ps -ql)
+   75  docker run -itd --name busybox-03 busybox 
+   76  docker inspect $(docker ps -ql)
+   77  docker images 
+   78  docker run -it ubuntu:16.04 
+   79  docker ps 
+   80  curl 172.17.0.6
+   81  docker ps 
+   82  docker attach 4aa169e5edf7        
+   83  curl 172.17.0.6
+   84  curl 172.17.0.6/info.html
+   85  docker ps 
+   86  docker commit -p -m "My Apache" 4aa169e5edf7   mytestapache:v1
+   87  docker images 
+   88  docker run -itd mytestapache:v1
+   89  docker ps 
+   90  docker inspect bb8e0116b39c        
+   91  curl 172.17.0.7/info.html
+   92  docker run -itd mytestapache:v1 apache2ctl start
+   93  docker ps -a
+   94  docker attach 4aa169e5edf7        
+   95  docker commit -p -m "My Apache" 4aa169e5edf7   mytestapache:v2
+   96  docker images 
+   97  docker run -d mytestapache:v2
+   98  docker ps 
+   99  docker ps -a
+  100  docker run -itd mytestapache:v2
+  101  docker ps 
+  102  docker inspect 02beb50839cc        
+  103  docker ps 
+  104  docker kill 6f50a6ecf7e7        
+  105  docker run -itd mytestapache:v2
+  106  docker ps 
+  107  docker inspect 0efce479eae1        
+  108  curl 172.17.0.8/info.html
+  109  curl 172.17.0.3/info.html
+  110  curl 172.17.0.7/info.html
+  111  curl 172.17.0.6/info.html
+  112  docker ps -a 
+  113  docker ps -aq 
+  114  docker kill $(docker ps -aq)
+  115  docker rm $(docker ps -aq)
+  116  docker ps -a 
+  117  docker images 
+  118  docker rmi busybox             
+  119  docker images 
+  120  docker system df 
+  121  ls
+  122  cd k8s-docker-20190909/
+  123  ls
+  124  cd docker/
+  125  ls
+  126  history > docker_day1.txt 
+  127  git add . 
+  128  git commit -m "Docker Containers"
+  129  git push origin master 
+  130  docker ps 
+  131  ls
+  132  cd k8s-docker-20190909/docker/dockerfiles/
+  133  ls
+  134  cd apache/
+  135  ls
+  136  vim Dockerfile 
+  137  docker images 
+  138  docker build -t testapache:v2 . 
+  139  docker images 
+  140  docker run -d testapache:v2
+  141  docker ps 
+  142  netstat -tulnp 
+  143  vim Dockerfile 
+  144  docker build -t testapache:v3 . 
+  145  docker run -d testapache:v3
+  146  docker ps 
+  147  ls
+  148  echo "Hello World" > amit.txtx
+  149  ls
+  150  vim Dockerfile 
+  151  docker build -t testapache:v4 . 
+  152  docker run -d testapache:v4
+  153  docker inspect $(docker ps -ql)
+  154  curl 172.17.0.5
+  155  curl 172.17.0.5/info.html
+  156  ls
+  157  vim amit.txtx 
+  158  docker build -t testapache:v5 . 
+  159  docker run -d testapache:v5
+  160  curl 172.17.0.5/info.html
+  161  curl 172.17.0.6/info.html
+  162  ls
+  163  cat Dockerfile 
+  164  cd ..
+  165  ls
+  166  cd ..
+  167  ls
+  168  cd ..
+  169  ls
+  170  cd docker/
+  171  ls
+  172  history >> docker_day1.txt 
