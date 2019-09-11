@@ -1,0 +1,100 @@
+  972  kubectl apply -f helloworld-v2-canary.yaml 
+  973  for ((i=1;i<10;i++)); do curl http://34.66.186.40 -H 'Host: hello.example.com';done
+  974  for ((i=1;i<20;i++)); do curl http://34.66.186.40 -H 'Host: hello.example.com';done
+  975  ls
+  976  cd ..
+  977  ls
+  978  history > K8s-history-3.txt 
+  979  git add . ; git commit -m "Canary"; git push origin master 
+  980  ls
+  981  git add . ; git commit -m "Canary"; git push origin master 
+  982  ls
+  983  git clone https://github.com/amitvashist7/k8s-docker-20190909.git
+  984  ls
+  985  cd k8s-docker-20190819/
+  986  ls
+  987  mkdir  ../k8s-docker-20190909/K8s/
+  988  ls
+  989  cp -rf K8s/01-Setup ../k8s-docker-20190909/K8s/
+  990  ls
+  991  cd ..
+  992  ls
+  993  cd k8s-docker-20190909/
+  994  ls
+  995  git add . ; git commit -m "K8s"; git push origin master 
+  996  ls
+  997  cd k8s-docker-20190909/K8s/
+  998  ls
+  999  cp -rf ../../k8s-docker-20190819/K8s/02-First-App . 
+ 1000  git add . ; git commit -m "K8s"; git push origin master 
+ 1001  gcloud container clusters get-credentials k8s-demo --zone us-central1-a --project sapient-office-218912
+ 1002  kubectl get nodes 
+ 1003  df -h 
+ 1004  cat /etc/*-release
+ 1005  kubectl get nodes 
+ 1006  ls
+ 1007  cd k8s-docker-20190819/
+ 1008  ls
+ 1009  cd K8s/
+ 1010  ls
+ 1011  cd ../../
+ 1012  ls
+ 1013  cd k8s-docker-20190909/
+ 1014  ls
+ 1015  cd K8s/
+ 1016  ls
+ 1017  cp -rf ../../k8s-docker-20190819/K8s/03-Replication-controller . 
+ 1018  ls
+ 1019  cd 03-Replication-controller/
+ 1020  ls
+ 1021  cat helloworld-repl-controller.yml 
+ 1022  vi helloworld-repl-controller.yml 
+ 1023  kubectl create -f helloworld-repl-controller.yml 
+ 1024  cd 
+ 1025  kubectlb get rc 
+ 1026  kubect get rc 
+ 1027  kubectl get rc 
+ 1028  kubectl get pods 
+ 1029  kubectl get pods -o wide 
+ 1030  kubectl get pods 
+ 1031  kubectl get rc 
+ 1032  kubectl edit rc 
+ 1033  cd - 
+ 1034  kubectl apply -f helloworld-repl-controller.yml 
+ 1035  cd 
+ 1036  kubectl describe pod helloworld-controller-6h9nc
+ 1037  kubectl describe rc helloworld-controller
+ 1038  kubectl get rc 
+ 1039  kubectl scale --replicas=5 rc helloworld-controller
+ 1040  kubectl get rc 
+ 1041  ls
+ 1042  cd - 
+ 1043  ls
+ 1044  cd ..
+ 1045  ls
+ 1046  cd ..
+ 1047  git add . ; git commit -m "RC"; git push origin master 
+ 1048  git pull
+ 1049  git add . ; git commit -m "RC"; git push origin master 
+ 1050  kubectl get pods 
+ 1051  kubectl get pods -o wide 
+ 1052  kubectl delete pod helloworld-controller-6sbrb helloworld-controller-rlvl2
+ 1053  kubectl get pods -o wide 
+ 1054  ls
+ 1055  kubectl get rc 
+ 1056  ls
+ 1057  cd K8s/03-Replication-controller/
+ 1058  ls
+ 1059  kubectl delete -f helloworld-repl-controller.yml 
+ 1060  ls
+ 1061  cd ..
+ 1062  ls
+ 1063  history 
+ 1064  history | tail 50 
+ 1065  history 
+ 1066  history | head 10
+ 1067  history | head 
+ 1068  history | head -50
+ 1069  history | tail -50
+ 1070  history | tail -100
+ 1071  history | tail -100 > History_K8s_Day3.txt
