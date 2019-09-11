@@ -98,3 +98,43 @@
  1069  history | tail -50
  1070  history | tail -100
  1071  history | tail -100 > History_K8s_Day3.txt
+ 1011  ls
+ 1012  kubectl get pods 
+ 1013  kubectl create -f helloworld.yml 
+ 1014  kubectl get pods 
+ 1015  kubectl get deployment
+ 1016  kubectl get rs
+ 1017  kubectl get pods 
+ 1018  kubectl get rc 
+ 1019  kubectl expose deployment helloworld-deployment --type=LoadBalancer
+ 1020  kubectl get svc 
+ 1021  kubectl get deployments
+ 1022  kubectl scale --replicas=10  deployments helloworld-deployment
+ 1023  kubectl get pods 
+ 1024  kubectl get deployment
+ 1025  kubectl describe deployment helloworld-deployment
+ 1026  kubectl set image deployment helloworld-deployment k8s-demo=amitvashist7/k8s-tiny-web:2
+ 1027  kubectl get pods 
+ 1028  watch -n .5 kubectl get pods 
+ 1029  kubectl set image deployment helloworld-deployment k8s-demo=amitvashist7/k8s-tiny-web:3
+ 1030  watch -n .5 kubectl get pods 
+ 1031  kubectl get rs 
+ 1032  kubectl rollout history deployment helloworld-deployment
+ 1033  kubectl rollout undo deployment helloworld-deployment
+ 1034  kubectl rollout history deployment helloworld-deployment
+ 1035  kubectl rollout undo deployment helloworld-deployment --to-revsion=1
+ 1036  kubectl rollout undo deployment helloworld-deployment --to-revision=1
+ 1037  kubectl rollout history deployment helloworld-deployment
+ 1038  kubectl rollout undo deployment helloworld-deployment
+ 1039  kubectl rollout status deployment helloworld-deployment
+ 1040  ls
+ 1041  cd 
+ 1042  ls
+ 1043  cd - 
+ 1044  lsl
+ 1045  ls
+ 1046  cd ..
+ 1047  ls
+ 1048  history | tail -50
+ 1049  history | tail -40
+ 1050  history | tail -40 >> History_K8s_Day3.txt 
