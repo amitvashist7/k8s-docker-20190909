@@ -1,0 +1,86 @@
+    1  git clone https://github.com/amitvashist7/k8s-docker-20190909.git
+    2  ls
+    3  cd k8s-docker-20190909/
+    4  ls
+    5  cd K8s/
+    6  ls
+    7  cd 01-Setup/
+    8  ls
+    9  vim install-kubernetes.sh 
+   10  ip addr 
+   11  sed -i 's/10.128.15.203/10.128.15.222/g' install-kubernetes.sh 
+   12  grep -i "10.128.15.222" install-kubernetes.sh
+   13  ./install-kubernetes.sh 
+   14  ls
+   15  cd k8s-docker-20190909/
+   16  ls
+   17  cd K8s/
+   18  ls
+   19  cd 01-Setup/
+   20  ls
+   21  ./install-kubernetes.sh 
+   22  mkdir -p $HOME/.kube
+   23  sudo cp -i /etc/kubernetes/admin.conf $HOME/.kube/config
+   24  chown $(id -u):$(id -g) $HOME/.kube/config
+   25  kubectl  get nofdes 
+   26  kubectl  get nodes 
+   27  kubeadm token list 
+   28  cd 
+   29  kubectl  get nodes 
+   30  ls
+   31  cd k8s-docker-20190909/
+   32  ls
+   33  git config list 
+   34  git config
+   35  git config --list 
+   36  cd ..
+   37  rm -rf k8s-docker-20190909
+   38  git clone https://github.com/amitvashist7/k8s-docker-20190909.git
+   39  ls
+   40  cd k8s-docker-20190909/
+   41  ls
+   42  cd K8s/
+   43  ls
+   44  cd 02-First-App/
+   45  ls
+   46  cat helloworld
+   47  cat helloworld.yml 
+   48  kubectl get nodes 
+   49  kubectl get pods 
+   50  kubectl create -f helloworld.yml 
+   51  kubectl get pods 
+   52  kubectl get pods -o wide 
+   53  kubectl create -f helloworld.yml 
+   54  ls
+   55  history 
+   56  c d
+   57  cd
+   58  kubectl  get pods 
+   59  kubectl  get pods -o wide 
+   60  curl 192.168.1.2
+   61  kubectl  get pods 
+   62  kubectl  get pods -o wide 
+   63  kubectl describe pod nodehelloworld   
+   64  ls
+   65  kubectl get pods 
+   66  kubectl delete pod nodehelloworld   
+   67  ls
+   68  cd k8s-docker-20190909/K8s/02-First-App/
+   69  ls
+   70  cat helloworld.yml 
+   71  kubectl get pods 
+   72  history 
+   73  ;
+   74  ls
+   75  kubectl create -f helloworld.yml 
+   76  kubectl get pods 
+   77  cd 
+   78  ls
+   79  kubectl edit pod nodehelloworld   
+   80  ls
+   81  rm -rf 1
+   82  cd - 
+   83  ls
+   84  cd ..
+   85  ls
+   86  history > K8s-History.txt
