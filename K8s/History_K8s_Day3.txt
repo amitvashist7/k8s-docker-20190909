@@ -138,3 +138,103 @@
  1048  history | tail -50
  1049  history | tail -40
  1050  history | tail -40 >> History_K8s_Day3.txt 
+  944  cat helloworld-service.yml 
+  945  kubectl create -f helloworld-service.yml 
+  946  kubectl get svc 
+  947  kubectl delete svc helloworld-deployment
+  948  source <(kubectl completion bash)
+  949  kubectl get svc 
+  950  ls
+  951  cat helloworld-nodeport-service.yml 
+  952  cat helloworld.yml 
+  953  kubectl get svc 
+  954  kubectl delete svc helloworld-service
+  955  kubectl get svc 
+  956  cat helloworld-nodeport-service.yml 
+  957  kubectl create -f helloworld-nodeport-service.yml 
+  958  kubectl get svc 
+  959  cat helloworld-nodeport-service.yml 
+  960  kubectl get nodes 
+  961  kubectl get nodes -o wide 
+  962  kubectl get pod -o wide 
+  963  curl 10.128.15.226:31001
+  964  kubectl get svc 
+  965  kubectl describe svc helloworld-service
+  966  kubectl get pods -o wide 
+  967  cd 
+  968  kubectl expose deployment hello --external-ip=172.18.9.10
+  969  ls
+  970  cd - 
+  971  ls
+  972  cd ..
+  973  ls
+  974  kubectl get deployments 
+  975  ls
+  976  cd 04-Deployment/
+  977  ls
+  978  kubectl create -f helloworld.yml 
+  979  kubectl get  deployments
+  980  kubectl expose deployment helloworld-deployment --type=LoadBalancer
+  981  kubectl get svc 
+  982  kubectl get pos
+  983  kubectl get pods
+  984  kubectl describe svc helloworld-deployment
+  985  kubectl get svc 
+  986  kubectl describe svc helloworld-service
+  987  kubectl describe svc helloworld-deployment
+  988  kubectl get svc 
+  989  kubectl delete svc helloworld-service
+  990  kubectl get pods 
+  991  kubectl delete pod nodehelloworld                           
+  992  kubectl describe svc helloworld-deployment
+  993  kubectl edit deployments 
+  994  kubectl describe svc helloworld-deployment
+  995  kubectl edit deployments 
+  996  kubectl describe svc helloworld-deployment
+  997  ls
+  998  cd ..
+  999  ls
+ 1000  history 
+ 1001  cd - 
+ 1002  ls
+ 1003  cd k8s-docker-20190909/K8s/
+ 1004  ls
+ 1005  cat 04-Deployment/helloworld-nodeselector.yml 
+ 1006  kubectl get nodes --show-lable
+ 1007  kubectl get nodes --show-label
+ 1008  kubectl get nodes --show-lables
+ 1009  kubectl get nodes --show-labels
+ 1010  kubectl create -f 04-Deployment/helloworld-nodeselector.yml 
+ 1011  kubectl get pods 
+ 1012  kubectl get dc
+ 1013  kubectl get deployment
+ 1014  source <(kubectl completion bash)
+ 1015  kubectl delete deployments helloworld-deployment
+ 1016  ls
+ 1017  kubectl get pods 
+ 1018  kubectl describe pod helloworld-deployment-2-75c55d6c49-2wgvx
+ 1019  ls
+ 1020  kubectl create -f 04-Deployment/helloworld-nodeselector-2.yml 
+ 1021  kubectl get pods 
+ 1022  cat 04-Deployment/helloworld-nodeselector-2.yml 
+ 1023  cat 04-Deployment/helloworld-nodeselector.yml 
+ 1024  kubectl get nodes
+ 1025  kubectl label nodes gke-k8s-demo-default-pool-a3fe4714-4174 hardware=virtual
+ 1026  kubectl get pods 
+ 1027  kubectl get pods -o wide 
+ 1028  kubectl get nodes
+ 1029  kubectl label nodes gke-k8s-demo-default-pool-a3fe4714-5ss6 hardware=virtual
+ 1030  kubectl label nodes gke-k8s-demo-default-pool-a3fe4714-fl5g hardware=virtual
+ 1031  kubectl get nodes
+ 1032  kubectl get pods -o wide 
+ 1033  kubectl delete pod helloworld-deployment-3-64c9f79c-6wrlz
+ 1034  kubectl get pods -o wide 
+ 1035  ls
+ 1036  cat 04-Deployment/helloworld-nodeselector.yml 
+ 1037  kubectl label nodes gke-k8s-demo-default-pool-a3fe4714-fl5g env=prod
+ 1038  kubectl get pods -o wide 
+ 1039  ls
+ 1040  history 
+ 1041  history | tail -200
+ 1042  history | tail -100
+ 1043  history | tail -100 >> History_K8s_Day3.txt 
