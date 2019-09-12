@@ -1,100 +1,1000 @@
-   82  kubectl delete svc wordpress-service
-   83  kubectl delete deployment --all
-   84  ls
-   85  git add . ; git commit -m "WordPress"; git push origin master 
-   86  ls
-   87  history 
-   88  ls
-   89  > K8s-history-2.txt 
-   90  vi K8s-history-2.txt 
-   91  ls
-   92  cp -rf ../../kubernetes-project/service-discovery 06-Service-discovery
-   93  ls
-   94  kubectl get ns 
-   95  kubectl get pods -n kube-system
-   96  ls
-   97  cd 06-Service-discovery/
-   98  ls
-   99  cat secrets.yml 
-  100  kubectl create -f secrets.yml 
-  101  ls
-  102  cat helloworld-db.yml 
-  103  ls
-  104  cat database.yml 
-  105  ls
-  106  kubectl create -f database.yml 
-  107  ls
-  108  cat database-service.yml 
-  109  kubectl get pods 
-  110  kubectl create -f database-service.yml 
-  111  kubectl get svc 
-  112  ls
-  113  cat helloworld-db.yml 
-  114  ls
-  115  kubectl create -f helloworld-db.yml
-  116  kubectl get pods 
-  117  ls
-  118  cat helloworld-db.yml 
-  119  ls
-  120  cat helloworld-db-service.yml 
-  121  kubectl create -f helloworld-db-service.yml
-  122  kubectl get svc 
-  123  kubectl edit svc helloworld-db-service 
-  124  kubectl get svc 
-  125  ls
-  126  cat helloworld-db.yml 
-  127  kubectl get svc 
-  128  kubectl run -it --image=busybox --restart=Never -- /bin/sh  
-  129  kubectl run -i --tty busynbox --image=busybox --restart=Never -- /bin/sh  
-  130  kubectl get svc 
-  131  kubectl get pods 
-  132  kubectl run -i --tty busynbox --image=busybox --restart=Never -- /bin/sh  
-  133  kubectl run -i --tty busybox --image=busybox --restart=Never -- /bin/sh  
-  134  ls
-  135  cd ..
-  136  ls
-  137  history 
-  138  ls
-  139  > K8s-history-2.txt 
-  140  vi K8s-history-2.txt 
-  141  git add . ; git commit -m "WordPress"; git push origin master 
-  142  kubectl get pods 
-  143  kubectl exec -it database  -- mysql -u root -p 
-  144  ls
-  145  l
-  146  kubectl get pods,deployments,svc,secrets
-  147  kubectl delete -f 06-Service-discovery/
-  148  kubectl get pods,deployments,svc,secrets
-  149  ls
-  150  kubectl pods 
-  151  kubectl get pods 
-  152  kubectl delete pods busybox    busynbox   
-  153  ls
-  154  cp -rf ../../kubernetes-project/configmap 07-ConfigMap
-  155  ls
-  156  cd 07-ConfigMap/
-  157  ls
-  158  cat reverseproxy.conf 
-  159  kubectl get configmap
-  160  cat nginx.yml 
-  161  kubectl create configmap nginx-config --from-file=reverseproxy.conf 
-  162  kubectl get configmap
-  163  kubectl describe configmap nginx-config
-  164  ls
-  165  vim nginx.yml 
-  166  ls
-  167  kubectl create -f nginx.yml 
-  168  kubectl get pods 
-  169  kubectl desribe pod helloworld-nginx
-  170  kubectl describe pod helloworld-nginx
-  171  ls
-  172  kubectl create -f nginx.yml 
-  173  kubectl create -f nginx-service.yml 
-  174  kubectl get svc 
-  175  kubectl edit svc helloworld-nginx-service
-  176  kubectl get svc 
-  177  ls
-  178  kubectl get svc 
-  179  ls
-  180  vim nginx.yml 
-  181  kubectl get pods 
+  224  gcloud container clusters get-credentials k8s-demo --zone us-central1-a --project sapient-office-218912
+  225  kubectl get nodes 
+  226  ls
+  227  cd k8s-docker-20190819/
+  228  ls
+  229  ls
+  230  cd K8s/
+  231  ls
+  232  cp -rf ../../kubernetes-project/ingress 07-Ingress
+  233  ls
+  234  cd 07-Ingress/
+  235  ls
+  236  cat nginx-ingress-controller.yml 
+  237  ls
+  238  cat ingress.yml 
+  239  ls
+  240  kubectl create -f nginx-ingress-controller.yml 
+  241  kubectl get pods 
+  242  vim helloworld-v1.yml 
+  243  ls
+  244  rm -rf 1
+  245  cd ..
+  246  kubectl create -f 07-Ingress/
+  247  kubectl get pods 
+  248  kubectl delete pod nginx-ingress-controller-7gnhn
+  249  kubectl get pods 
+  250  kubectl create clusterrolebinding add-on-cluster-admin   --clusterrole=cluster-admin   --serviceaccount=kube-system:default
+  251  kubectl create clusterrolebinding add-on-cluster-admin-1   --clusterrole=cluster-admin   --serviceaccount=default:default
+  252  kubectl get pods 
+  253  kubectl delete pod nginx-ingress-controller-b44kf
+  254  kubectl get pods 
+  255  kubectl get svc 
+  256  ls
+  257  kubectl get svc 
+  258  kubectl get pods 
+  259  kubectl get rc 
+  260  kubectl expose rc nginx-ingress-controller --type=LoadBalancer
+  261  kubectl get rc 
+  262  kubectl get svc 
+  263  curl 35.202.208.167
+  264  kubectl get pods -o wide 
+  265  curl 35.202.208.167 -H 'Host: helloworld-v2.example.com'
+  266  curl 35.202.208.167
+  267  curl 35.202.208.167 -H 'Host: helloworld-v2.example.com'
+  268  curl 35.202.208.167 -H 'Host: helloworld-v1.example.com'
+  269  curl 35.202.208.167
+  270  curl 35.202.208.167 -H 'Host: helloworld-v1.example.com'
+  271  curl 35.202.208.167 -H 'Host: helloworld-v2.example.com'
+  272  kubectl get svc 
+  273  ls
+  274  history 
+  275  ls
+  276  history  K8s-history-3.txt
+  277  history >  K8s-history-3.txt
+  278  git add . ; git commit -m "Ingress"; git push origin master 
+  279  ls
+  280  cd 07-Ingress/
+  281  ls
+  282  vim ingress.yml 
+  283  kubectl apply -f ingress.yml 
+  284  curl 35.202.208.167/v2
+  285  ls
+  286  cd ..
+  287  ls
+  288  cd ..
+  289  l
+  290  cd K8s/
+  291  ls
+  292  cd ..
+  293  ls
+  294  cd ..
+  295  ls
+  296  cd kubernetes-project/
+  297  ls
+  298  cd istio/
+  299  ls
+  300  cat external-service.yaml 
+  301  ls
+  302  cat helloworld.yaml 
+  303  ls
+  304  cd ..
+  305  ls
+  306  cd 
+  307  ls
+  308  cd k8s-docker-20190819/K8s/
+  309  ls
+  310  cd 07-Ingress/
+  311  ls
+  312  cd ..
+  313  kubectl delete -f 07-Ingress/
+  314  ls
+  315  kubectl get svc 
+  316  kubectl delete svc nginx-ingress-controller
+  317  history 
+  318  ls
+  319  cp -rf ../../kubernetes-project/statefullset 08-Statefullset
+  320  ls
+  321  cd 08-Statefullset/
+  322  ls
+  323  cat helloworld-stateful.yaml 
+  324  kubectl get pods 
+  325  kubectl create -f helloworld-stateful.yaml 
+  326  cat helloworld-stateful.yaml 
+  327  kubectl get pods 
+  328  kubectl delete pod helloworld-statefull-1
+  329  kubectl get statefullset
+  330  kubectl get statefulset
+  331  kubectl scale --replicas=10 statefullset helloworld-statefull
+  332  kubectl scale --replicas=10 statefulset helloworld-statefull
+  333  kubectl scale --replicas=2 statefulset helloworld-statefull
+  334  kubectl describe statefulset helloworld-statefull
+  335  kubectl delete statefulset helloworld-statefull
+  336  ls
+  337  vim cassandra.yaml 
+  338  kubectl get pv 
+  339  kubectl get pvc
+  340  ls
+  341  kubectl create -f cassandra.yaml 
+  342  kubectl get pv 
+  343  kubectl get pvc
+  344  kubectl get pv 
+  345  vim cassandra.yaml 
+  346  kubectl get pv 
+  347  kubectl get pvc
+  348  kubectl get pods 
+  349  watch -n .1 kubectl get pods 
+  350  kubectl get pods -o wide 
+  351  kubectl delete pod cassandra-1
+  352  kubectl get pods -o wide 
+  353  kubectl delete pod cassandra-2
+  354  kubectl get pods -o wide 
+  355  kubectl exec -it cassandra-0 -- bash 
+  356  ls
+  357  cd ..
+  358  ls
+  359  history > K8s-history-3.txt
+  360  git add . ; git commit -m "PV & PVC"; git push origin master 
+  361  ls
+  362  kubectl delete -f 08-Statefullset/
+  363  kubectl get pv 
+  364  kubectl get pvc
+  365  kubectl delete pvc --all
+  366  kubectl get pv
+  367  ls
+  368  cd ..
+  369  ls
+  370  cd ..
+  371  ls
+  372  cd kubernetes-project/
+  373  ls
+  374  cd autoscaling/
+  375  ls
+  376  cat hpa-example.yml 
+  377  ls
+  378  cd ..
+  379  ls
+  380  cd istio/
+  381  ls
+  382  cat helloworld-v2-canary.yaml 
+  383  ls
+  384  cat helloworld.yaml 
+  385  sed -i 's/wardviaene/amitvashist7/g' helloworld.yaml
+  386  ls
+  387  cat helloworld.yaml 
+  388  ls
+  389  cat helloworld-v2.yaml 
+  390  sed -i 's/wardviaene/amitvashist7/g' helloworld-v2.yaml 
+  391  cat helloworld-v2.yaml 
+  392  ls
+  393  cat helloworld-v3.yaml 
+  394  sed -i 's/wardviaene/amitvashist7/g' helloworld-v3.yaml 
+  395  ls
+  396  cd 
+  397  ls
+  398  ls
+  399  cd k8s-docker-20190819/
+  400  ls
+  401  cd K8s/
+  402  ls
+  403  cd 08-Statefullset/
+  404  ls
+  405  vim cassandra.yaml 
+  406  ls
+  407  cd ..
+  408  ls
+  409  cd ../../kubernetes-project/
+  410  ls
+  411  cd nfs-persistent-volume/
+  412  ls
+  413  cat nfs-pv.yaml 
+  414  ls
+  415  cat nfs-pvc.yaml 
+  416  ls
+  417  cat nfs-busybox-rc.yaml 
+  418  ls
+  419  cd ..
+  420  ls
+  421  cd ..
+  422  cd k8s-docker-20190819/
+  423  ls
+  424  cd K8s/
+  425  ls
+  426  cp -rf ../../kubernetes-project/nfs-persistent-volume 09-Nfs-persistent-volume 
+  427  ls
+  428  cp -rf ../../kubernetes-project/istio 
+  429  ls
+  430  cp -rf ../../kubernetes-project/istio 10-Istio
+  431  ls
+  432  cd 10-Istio/
+  433  ls
+  434  cat README.m
+  435  cat README.md 
+  436  ls
+  437  cd 
+  438  ls
+  439  cd istio-1.0.2/
+  440  ls
+  441  cd bin/
+  442  ls
+  443  cat ~/.profile 
+  444  pwd
+  445  vim ~/.profile
+  446  source ~/.profile 
+  447  cd
+  448  ls
+  449  istioctl --help
+  450  ls
+  451  gcloud config get-value core/account 
+  452  kubectl create clusterrolebinding cluster-admin-binding --clusterrole=cluster-admin  --user=$gcloud config get-value core/account) 
+  453  kubectl create clusterrolebinding cluster-admin-binding --clusterrole=cluster-admin  --user=$(gcloud config get-value core/account) 
+  454  ls
+  455  cd istio-1.0.2/
+  456  ls
+  457  cd install/
+  458  ls
+  459  cd kubernetes/helm/
+  460  ls
+  461  cd istio/templates/
+  462  ls
+  463  kubectl create -f crds.yaml 
+  464  ls
+  465  cd ..
+  466  ls
+  467  cd ..
+  468  ls
+  469  cd ..
+  470  ls
+  471  vim istio-demo.yaml 
+  472  kubectl create -f istio-demo.yaml 
+  473  cd 
+  474  ls
+  475  kubectl get ns
+  476  kubectl get pods -n istio-system
+  477  ls
+  478  kubectl label ns default istio-inection=enabled
+  479  kubectl get ns 
+  480  ls
+  481  cd k8s-docker-20190819/K8s/
+  482  ls
+  483  cd 10-Istio/
+  484  ls
+  485  vim helloworld.yaml 
+  486  1
+  487  kubectl create -f <(istioctl kube-inject -f helloworld.yaml) 
+  488  kubectl get svc 
+  489  kubectl get pods 
+  490  kubectl describe pod hello-58cfbd7756-k2w29
+  491  ls
+  492  cat helloworld-gw.yaml 
+  493  kubectl create -f helloworld-gw.yaml
+  494  kubectl get svc 
+  495  kubectl get ns 
+  496  kubectl get svc -n istio-system
+  497  git add . ; git commit -m "Istio"; git push origin master 
+  498  history 
+  499  ls
+  500  cd ..
+  501  ls
+  502  cd K8s/
+  503  ls
+  504  history > K8s-history-Istio.txt
+  505  git add . ; git commit -m "Istio"; git push origin master 
+  506  ls
+  507  cd k8s-docker-20190819/
+  508  cd K8s/
+  509  ls
+  510  cp -rf ../../kubernetes-project/helm 11-Helm
+  511  ls
+  512  cd 11-Helm/
+  513  ls
+  514  cat README.md 
+  515  helm --version 
+  516  helm -version 
+  517  helm -v
+  518  helm -V
+  519  helm --help
+  520  ls
+  521  cat helm-rbac.yaml 
+  522  kubectl create -f helm-rbac.yaml 
+  523  ls
+  524  helm init --service-account tiller 
+  525  kubectl get pods 
+  526  kubectl get ns
+  527  gcloud container clusters get-credentials k8s-demo --zone us-central1-a --project sapient-office-218912
+  528  kubectl get pods 
+  529  kubectl get ns 
+  530  kubectl get pod -n istio-system
+  531  helm init --service-account tiller 
+  532  helm list 
+  533  kubectl create -f helm-rbac.yaml 
+  534  ls
+  535  cd k8s-docker-20190819/
+  536  ls
+  537  cd K8s/11-Helm/
+  538  ls
+  539  kubectl create -f helm-rbac.yaml 
+  540  helm init --service-account tiller 
+  541  helm list 
+  542  cat README.md 
+  543  ls
+  544  helm init --service-account tiller
+  545  kubectl get pods 
+  546  kubectl get pods -n kube-system
+  547  ls
+  548  helm search redis
+  549  kubectl get pods -n kube-system
+  550  helm search redis
+  551  helm install stable/redis
+  552  helm search redis
+  553  helm list 
+  554  helm remove lolling-wombat
+  555  helm delete lolling-wombat
+  556  helm list 
+  557  helm install --name myredisdemo stable/redis
+  558  kubectl get pods -o wide | grep -i myredisdemo
+  559  kubectl get pods 
+  560  kubectl get deployment
+  561  kubectl delete pod myredisdemo-slave-5bdf4bc5b-jfh7v
+  562  kubectl get deployment
+  563  kubectl get pods 
+  564  helm  list 
+  565  helm delete myredisdemo     
+  566  ls
+  567  cd ..
+  568  ls
+  569  cd K8s/
+  570  ls
+  571  cp -rf ../../kubernetes-project/autoscaling  12-Autoscaling
+  572  ls
+  573  cd 12-Autoscaling/
+  574  ls
+  575  vim hpa-example.yml 
+  576  kubectl create -f hpa-example.yml 
+  577  kubectl get pods 
+  578  kubectl delete deployment --all
+  579  kubectl get pods 
+  580  kubectl create -f hpa-example.yml 
+  581  ls
+  582  kubectl get pods 
+  583  kubectl top nodes 
+  584  kubectl top pods 
+  585  kubectl get hpa 
+  586  ls
+  587  kubectl get hpa 
+  588  kubectl edit hpa hpa-example-autoscaler
+  589  kubectl get hpa 
+  590  kubectl get pods 
+  591  kubectl get svc 
+  592  kubectl edit svc hpa-example
+  593  kubectl get svc 
+  594  kubectl delete svc hello         world          world-2
+  595  kubectl get svc 
+  596  kubectl get pods 
+  597  kubectl top pods 
+  598  kubectl get svc 
+  599  cd 
+  600  kubectl get pods 
+  601  kubectl top pods 
+  602  watch -n .1 kubectl top pods 
+  603  kubectl top pods -w
+  604  kubectl top pods --watch
+  605  kubectl -w top pods 
+  606  kubectl  top pods --help
+  607  watch -n .1 kubectl top pods 
+  608  kubectl top -w pods 
+  609  kubectl top pods 
+  610  kubectl get pofs 
+  611  kubectl get pods
+  612  ls
+  613  cd ..
+  614  ls
+  615  cd 10-Istio/
+  616  ls
+  617  cat helloworld.yaml 
+  618  kubectl create -f <(istioctl kube-inject -f helloworld.yaml) 
+  619  kubectl get pods 
+  620  kubectl describe pod hello-58cfbd7756-97xj8
+  621  ls
+  622  cat helloworld-gw.yaml 
+  623  ls
+  624  kubectl create -f helloworld-gw.yaml
+  625  cat helloworld-gw.yaml 
+  626  kubectl get ns 
+  627  kubectl get pods -n istio-system 
+  628  kubectl get svc  -n istio-system 
+  629  ls
+  630  cat helloworld-v2.yaml 
+  631  kubectl create -f <(istioctl kube-inject -f helloworld-v2.yaml) 
+  632  kubectl get pods 
+  633  ls
+  634  cat helloworld-v2-routing.yaml 
+  635  kubectl create -f helloworld-v2-routing.yaml 
+  636  kubectl apply -f helloworld-v2-routing.yaml 
+  637  curl http://34.66.186.40
+  638  curl http://34.66.186.40/hello
+  639  curl http://34.66.186.40/hello -H 'Host: hello.example.com'
+  640  curl http://34.66.186.40/hello -H 'Host: hello.example.com' -H 'end-user: john'
+  641  ls
+  642  cat helloworld-v2-routing.yaml 
+  643  kubectl get svc 
+  644  ls
+  645  kubectl create -f helloworld-v2-canary.yaml 
+  646  kubectl apply -f helloworld-v2-canary.yaml 
+  647  curl http://34.66.186.40 -H 'Host: hello.example.com' 
+  648  for ((i=1;i<10;i++)); do curl http://34.66.186.40 -H 'Host: hello.example.com';done
+  649  vim helloworld-v2-canary.yaml 
+  650  kubectl apply -f helloworld-v2-canary.yaml 
+  651  for ((i=1;i<10;i++)); do curl http://34.66.186.40 -H 'Host: hello.example.com';done
+  652  for ((i=1;i<20;i++)); do curl http://34.66.186.40 -H 'Host: hello.example.com';done
+  653  ls
+  654  cd ..
+  655  ls
+  656  history > K8s-history-3.txt 
+  657  git add . ; git commit -m "Canary"; git push origin master 
+  658  ls
+  659  git add . ; git commit -m "Canary"; git push origin master 
+  660  ls
+  661  git clone https://github.com/amitvashist7/k8s-docker-20190909.git
+  662  ls
+  663  cd k8s-docker-20190819/
+  664  ls
+  665  mkdir  ../k8s-docker-20190909/K8s/
+  666  ls
+  667  cp -rf K8s/01-Setup ../k8s-docker-20190909/K8s/
+  668  ls
+  669  cd ..
+  670  ls
+  671  cd k8s-docker-20190909/
+  672  ls
+  673  git add . ; git commit -m "K8s"; git push origin master 
+  674  ls
+  675  cd k8s-docker-20190909/K8s/
+  676  ls
+  677  cp -rf ../../k8s-docker-20190819/K8s/02-First-App . 
+  678  git add . ; git commit -m "K8s"; git push origin master 
+  679  gcloud container clusters get-credentials k8s-demo --zone us-central1-a --project sapient-office-218912
+  680  kubectl get nodes 
+  681  df -h 
+  682  cat /etc/*-release
+  683  kubectl get nodes 
+  684  ls
+  685  cd k8s-docker-20190819/
+  686  ls
+  687  cd K8s/
+  688  ls
+  689  cd ../../
+  690  ls
+  691  cd k8s-docker-20190909/
+  692  ls
+  693  cd K8s/
+  694  ls
+  695  cp -rf ../../k8s-docker-20190819/K8s/03-Replication-controller . 
+  696  ls
+  697  cd 03-Replication-controller/
+  698  ls
+  699  cat helloworld-repl-controller.yml 
+  700  vi helloworld-repl-controller.yml 
+  701  kubectl create -f helloworld-repl-controller.yml 
+  702  cd 
+  703  kubectlb get rc 
+  704  kubect get rc 
+  705  kubectl get rc 
+  706  kubectl get pods 
+  707  kubectl get pods -o wide 
+  708  kubectl get pods 
+  709  kubectl get rc 
+  710  kubectl get pods 
+  711  kubectl edit rc 
+  712  cd - 
+  713  kubectl apply -f helloworld-repl-controller.yml 
+  714  cd 
+  715  kubectl describe pod helloworld-controller-6h9nc
+  716  kubectl describe rc helloworld-controller
+  717  kubectl get rc 
+  718  kubectl scale --replicas=5 rc helloworld-controller
+  719  kubectl get rc 
+  720  ls
+  721  cd - 
+  722  ls
+  723  cd ..
+  724  ls
+  725  cd ..
+  726  git add . ; git commit -m "RC"; git push origin master 
+  727  git pull
+  728  git add . ; git commit -m "RC"; git push origin master 
+  729  kubectl get pods 
+  730  kubectl get pods -o wide 
+  731  kubectl delete pod helloworld-controller-6sbrb helloworld-controller-rlvl2
+  732  kubectl get pods -o wide 
+  733  ls
+  734  kubectl get rc 
+  735  ls
+  736  cd K8s/03-Replication-controller/
+  737  ls
+  738  kubectl delete -f helloworld-repl-controller.yml 
+  739  ls
+  740  cd ..
+  741  ls
+  742  history 
+  743  history | tail 50 
+  744  history 
+  745  history | head 10
+  746  history | head 
+  747  history | head -50
+  748  history | tail -50
+  749  history | tail -100
+  750  history | tail -100 > History_K8s_Day3.txt
+  751  git add . ; git commit -m "RC"; git push origin master 
+  752  watch -n .5 kubectl get pods 
+  753  kubectl get ns 
+  754  kubectl get pod -n kube-system
+  755  ls
+  756  cd k8s-docker-20190909/
+  757  ls
+  758  cd K8s/
+  759  ls
+  760  cd 03-Replication-controller/
+  761  ls
+  762  cp -rf helloworld-repl-controller.yml helloworld-repl-controller-1.yml 
+  763  ls
+  764  vi helloworld-repl-controller-1.yml 
+  765  ls
+  766  cd ..
+  767  kubectl create -f 03-Replication-controller/
+  768  kubectl get rc 
+  769  kubectl edit rc 
+  770  kubectl edit rc helloworld-controller
+  771  kubectl get rc 
+  772  kubectl delete -f 03-Replication-controller/
+  773  kubectl get pods 
+  774  cd k8s-docker-20190819/
+  775  ls
+  776  cd ..
+  777  ls
+  778  cd k8s-docker-20190909/K8s/
+  779  ls
+  780  cp -rf ../../k8s-docker-20190819/K8s/04-Deployment .
+  781  ls
+  782  cd 04-Deployment/
+  783  ls
+  784  kubectl get pods 
+  785  kubectl create -f helloworld.yml 
+  786  kubectl get pods 
+  787  kubectl get deployment
+  788  kubectl get rs
+  789  kubectl get pods 
+  790  kubectl get rc 
+  791  kubectl expose deployment helloworld-deployment --type=LoadBalancer
+  792  kubectl get svc 
+  793  kubectl get deployments
+  794  kubectl scale --replicas=10  deployments helloworld-deployment
+  795  kubectl get pods 
+  796  watch -n .5 kubectl get pods 
+  797  kubectl get deployment
+  798  kubectl describe deployment helloworld-deployment
+  799  kubectl set image deployment helloworld-deployment k8s-demo=amitvashist7/k8s-tiny-web:2
+  800  kubectl get pods 
+  801  while true; do curl http://34.69.110.164; done
+  802  watch -n .5 kubectl get pods 
+  803  kubectl set image deployment helloworld-deployment k8s-demo=amitvashist7/k8s-tiny-web:3
+  804  watch -n .5 kubectl get pods 
+  805  kubectl get rs 
+  806  kubectl rollout history deployment helloworld-deployment
+  807  kubectl rollout undo deployment helloworld-deployment
+  808  kubectl rollout history deployment helloworld-deployment
+  809  kubectl rollout undo deployment helloworld-deployment --to-revsion=1
+  810  kubectl rollout undo deployment helloworld-deployment --to-revision=1
+  811  kubectl rollout history deployment helloworld-deployment
+  812  kubectl rollout undo deployment helloworld-deployment
+  813  kubectl rollout status deployment helloworld-deployment
+  814  ls
+  815  cd 
+  816  ls
+  817  cd - 
+  818  lsl
+  819  ls
+  820  cd ..
+  821  ls
+  822  history | tail -50
+  823  history | tail -40
+  824  history | tail -40 >> History_K8s_Day3.txt 
+  825  ls
+  826  cd ..
+  827  git add . ; git commit -m "Deployment"; git push origin master 
+  828  source <(kubectl completion bash)
+  829  kubectl get deployments
+  830  kubectl rollout history deployment helloworld-deployment --revsion=6
+  831  kubectl rollout history deployment helloworld-deployment --revision=6
+  832  kubectl rollout history deployment helloworld-deployment --revision=5
+  833  kubectl rollout history deployment helloworld-deployment --revision=4
+  834  kubectl rollout history deployment helloworld-deployment 
+  835  kubectl set image deployment helloworld-deployment k8s-demo=amitvashist7/k8s-tiny-web:4 --record
+  836  kubectl rollout history deployment helloworld-deployment 
+  837  kubectl set image deployment helloworld-deployment k8s-demo=amitvashist7/k8s-tiny-web:2 --record "Test01"
+  838  kubectl set image deployment helloworld-deployment k8s-demo=amitvashist7/k8s-tiny-web:2 --record="Test01"
+  839  kubectl set image deployment helloworld-deployment k8s-demo=amitvashist7/k8s-tiny-web:2 --record
+  840  kubectl rollout history deployment helloworld-deployment 
+  841  kubectl set image deployment helloworld-deployment k8s-demo=amitvashist7/k8s-tiny-web:2 --record='MyAppv1'
+  842  ls
+  843  kubectl get deployments
+  844  kubectl delete deployments helloworld-deployment 
+  845  kubectl get deployments
+  846  ls
+  847  cd k8s-docker-20190909/
+  848  ls
+  849  cd K8s/
+  850  ls
+  851  cd 02-First-App/
+  852  ls
+  853  kubectl create -f helloworld.yml 
+  854  ls
+  855  kubectl get pods 
+  856  cat helloworld-service.yml 
+  857  kubectl create -f helloworld-service.yml 
+  858  kubectl get svc 
+  859  kubectl delete svc helloworld-deployment
+  860  source <(kubectl completion bash)
+  861  kubectl get svc 
+  862  ls
+  863  cat helloworld-nodeport-service.yml 
+  864  cat helloworld.yml 
+  865  kubectl get svc 
+  866  kubectl delete svc helloworld-service
+  867  kubectl get svc 
+  868  cat helloworld-nodeport-service.yml 
+  869  kubectl create -f helloworld-nodeport-service.yml 
+  870  kubectl get svc 
+  871  cat helloworld-nodeport-service.yml 
+  872  kubectl get nodes 
+  873  kubectl get nodes -o wide 
+  874  kubectl get pod -o wide 
+  875  curl 10.128.15.226:31001
+  876  kubectl get svc 
+  877  kubectl describe svc helloworld-service
+  878  kubectl get pods -o wide 
+  879  cd 
+  880  kubectl expose deployment hello --external-ip=172.18.9.10
+  881  ls
+  882  cd - 
+  883  ls
+  884  cd ..
+  885  ls
+  886  kubectl get deployments 
+  887  ls
+  888  cd 04-Deployment/
+  889  ls
+  890  kubectl create -f helloworld.yml 
+  891  kubectl get  deployments
+  892  kubectl expose deployment helloworld-deployment --type=LoadBalancer
+  893  kubectl get svc 
+  894  kubectl get pos
+  895  kubectl get pods
+  896  kubectl describe svc helloworld-deployment
+  897  kubectl get svc 
+  898  kubectl describe svc helloworld-service
+  899  kubectl describe svc helloworld-deployment
+  900  kubectl get svc 
+  901  kubectl delete svc helloworld-service
+  902  kubectl get pods 
+  903  kubectl delete pod nodehelloworld                           
+  904  kubectl describe svc helloworld-deployment
+  905  kubectl edit deployments 
+  906  kubectl describe svc helloworld-deployment
+  907  kubectl edit deployments 
+  908  kubectl describe svc helloworld-deployment
+  909  ls
+  910  cd ..
+  911  ls
+  912  history 
+  913  cd - 
+  914  ls
+  915  cd k8s-docker-20190909/K8s/
+  916  ls
+  917  cat 04-Deployment/helloworld-nodeselector.yml 
+  918  kubectl get nodes --show-lable
+  919  kubectl get nodes --show-label
+  920  kubectl get nodes --show-lables
+  921  kubectl get nodes --show-labels
+  922  kubectl create -f 04-Deployment/helloworld-nodeselector.yml 
+  923  kubectl get pods 
+  924  kubectl get dc
+  925  kubectl get deployment
+  926  source <(kubectl completion bash)
+  927  kubectl delete deployments helloworld-deployment
+  928  ls
+  929  kubectl get pods 
+  930  kubectl describe pod helloworld-deployment-2-75c55d6c49-2wgvx
+  931  ls
+  932  kubectl create -f 04-Deployment/helloworld-nodeselector-2.yml 
+  933  kubectl get pods 
+  934  cat 04-Deployment/helloworld-nodeselector-2.yml 
+  935  cat 04-Deployment/helloworld-nodeselector.yml 
+  936  kubectl get nodes
+  937  kubectl label nodes gke-k8s-demo-default-pool-a3fe4714-4174 hardware=virtual
+  938  kubectl get pods 
+  939  kubectl get pods -o wide 
+  940  kubectl get nodes
+  941  kubectl label nodes gke-k8s-demo-default-pool-a3fe4714-5ss6 hardware=virtual
+  942  kubectl label nodes gke-k8s-demo-default-pool-a3fe4714-fl5g hardware=virtual
+  943  kubectl get nodes
+  944  kubectl get pods -o wide 
+  945  kubectl delete pod helloworld-deployment-3-64c9f79c-6wrlz
+  946  kubectl get pods -o wide 
+  947  ls
+  948  cat 04-Deployment/helloworld-nodeselector.yml 
+  949  kubectl label nodes gke-k8s-demo-default-pool-a3fe4714-fl5g env=prod
+  950  kubectl get pods -o wide 
+  951  ls
+  952  history 
+  953  history | tail -200
+  954  history | tail -100
+  955  history | tail -100 >> History_K8s_Day3.txt 
+  956  git add . ; git commit -m "Deployment"; git push origin master 
+  957  kubectl label nodes gke-k8s-demo-default-pool-a3fe4714-fl5g env-
+  958  kubectl get nodes --show-labels
+  959  kubectl label nodes gke-k8s-demo-default-pool-a3fe4714-fl5g hardware-
+  960  kubectl get nodes --show-labels
+  961  kubectl get pods 
+  962  gcloud container clusters get-credentials k8s-demo --zone us-central1-a --project sapient-office-218912
+  963  kubectl get pods 
+  964  ls
+  965  cd k8s-docker-20190909/
+  966  ;s
+  967  ls
+  968  cd K8s/
+  969  ls
+  970  cd 04-Deployment/
+  971  ls
+  972  cat helloworld-healthcheck.yml 
+  973  kubectl create -f helloworld-healthcheck.yml 
+  974  kubectl get pods 
+  975  kubectl get pods -o wide 
+  976  kubectl get pods 
+  977  kubectl desribe pod helloworld-deployment-7c6f554f6d-7sfsw
+  978  kubectl describe pod helloworld-deployment-7c6f554f6d-7sfsw
+  979  source <(kubectl completion bash)
+  980  kubectl edit deployments helloworld-deployment helloworld
+  981  kubectl edit deployments helloworld-deployment 
+  982  kubectl get pods 
+  983  kubectl get rc 
+  984  kubectl get rs
+  985  kubectl get pods 
+  986  kubectl describe pod helloworld-deployment-64cbd7875b-6n2rb
+  987  kubectl get pods 
+  988  kubectl edit deployments helloworld-deployment 
+  989  kubectl get pods 
+  990  kubectl get rs 
+  991  kubectl describe rs helloworld-deployment-7c6f554f6d
+  992  kubectl get rs 
+  993  kubectl describe rs helloworld-deployment-64cbd7875b
+  994  kubectl get rs 
+  995  kubectl describe rs helloworld-deployment-657d5dfb8f
+  996  kubectl get pods 
+  997  kubectl describe pod helloworld-deployment-657d5dfb8f-76ppt
+  998  ls
+  999  kubectl rollout undo deployment helloworld-deployment --to-revision=1
+ 1000  ls
+ 1001  kubectl get pods 
+ 1002  kubectl delete deployment helloworld-deployment
+ 1003  source <(kubectl completion bash)
+ 1004  ls
+ 1005  rm -rf nohup*
+ 1006  ls
+ 1007  echo -n "root" > username.txt
+ 1008  echo -n "Redhat@1234" > username.txt
+ 1009  echo -n "root" > username.txt
+ 1010  echo -n "Redhat@1234" > password.txt
+ 1011  kubectl create secret genric my-pass --from-file=./username.txt --from-file=./password.txt 
+ 1012  kubectl create secret generic my-pass --from-file=./username.txt --from-file=./password.txt 
+ 1013  ls
+ 1014  kubectl get secrets 
+ 1015  kubectl describe secrets my-pass
+ 1016  kubectl describe secrets default-token-8ndst
+ 1017  ls
+ 1018  rm -rf username.txt password.txt 
+ 1019  ls
+ 1020  cd k8s-docker-20190909/
+ 1021  ls
+ 1022  cd K8s/
+ 1023  ls
+ 1024  cd 04-Deployment/
+ 1025  ls
+ 1026  cat helloworld-secrets-volumes.yml 
+ 1027  ls
+ 1028  cat helloworld-secrets
+ 1029  cat helloworld-secrets.yml 
+ 1030  echo 'root' | base64
+ 1031  echo 'password' | base64
+ 1032  kubectl create -f helloworld-secrets.yml 
+ 1033  kubectl get secrets 
+ 1034  kubectl describe secrets  db-secrets
+ 1035  ls
+ 1036  cat helloworld-secrets-volumes.yml
+ 1037  kubectl create -f helloworld-secrets-volumes.yml
+ 1038  kubectl get pods 
+ 1039  kubectl describe pod helloworld-deployment-57595c948-nzzkk
+ 1040  kubectl get pods 
+ 1041  kubectl exec -it helloworld-deployment-57595c948-nzzkk -- /bin/sh
+ 1042  kubectl get secrets 
+ 1043  kubectl edit deployments helloworld-deployment 
+ 1044  kubectl exec -it helloworld-deployment-675869ffd8-7bf45 -- /bin/sh
+ 1045  ls
+ 1046  history 
+ 1047  ls
+ 1048  cd ..
+ 1049  ls
+ 1050  cp -rf ../../k8s-docker-20190819/K8s/05-Wordpress 
+ 1051  cp -rf ../../k8s-docker-20190819/K8s/05-Wordpress .
+ 1052  cp -rf ../../k8s-docker-20190819/K8s/06-Service-discovery .
+ 1053  ls
+ 1054  cd ls
+ 1055  ls
+ 1056  cd 05-Wordpress/
+ 1057  ls
+ 1058  cat wordpress-single-deployment-no-volumes.yml 
+ 1059  ls
+ 1060  cat wordpress-secrets.yml 
+ 1061  ls
+ 1062  cat wordpress-service.yml 
+ 1063  ls
+ 1064  cd ..
+ 1065  ls
+ 1066  kubectl create -f 05-Wordpress/
+ 1067  kubectl get secrets 
+ 1068  kubectl get svc 
+ 1069  kubectl get secrets 
+ 1070  kubectl describe secrets wordpress-secrets
+ 1071  kubectl get pods 
+ 1072  kubectl describe pod wordpress-deployment-6958b7b48f-6krmk
+ 1073  kubectl get pods 
+ 1074  kubectl get svc 
+ 1075  kubectl get pods 
+ 1076  kubectl exec -it wordpress-deployment-6958b7b48f-6krmk -c mysql
+ 1077  kubectl exec -it wordpress-deployment-6958b7b48f-6krmk -c mysql -- mysql -u root -p 
+ 1078  kubectl exec -it wordpress-deployment-6958b7b48f-6krmk -c wordpress -- /bin/sh  
+ 1079  ls
+ 1080  history | head -100 
+ 1081  history | head -100 > History_K8s_Day4.txt
+ 1082  git add . ; git commit -m "Deployment"; git push origin master 
+ 1083  ls
+ 1084  kubectl get deployments 
+ 1085  kubectl delete deployments 
+ 1086  kubectl delete deployments --all
+ 1087  ls
+ 1088  cd 06-Service-discovery/
+ 1089  ls
+ 1090  cat secrets.yml 
+ 1091  ls
+ 1092  cat database.yml 
+ 1093  ls
+ 1094  cat database-service.yml 
+ 1095  ls
+ 1096  cat helloworld-db-service.yml 
+ 1097  ls
+ 1098  vim helloworld-db.yml 
+ 1099  ls
+ 1100  rm -rf 1
+ 1101  ls
+ 1102  cd ..
+ 1103  ls
+ 1104  kubectl create -f 06-Service-discovery/
+ 1105  source <(kubectl completion bash)
+ 1106  kubectl get pod,svc,deployment,secrets
+ 1107  ls
+ 1108  cd 06-Service-discovery/
+ 1109  ls
+ 1110  cat database.yml 
+ 1111  kubectl get pods 
+ 1112  cat helloworld-db.yml 
+ 1113  kubectl get svc 
+ 1114  kubectl delete svc wordpress-service
+ 1115  ls
+ 1116  kubectl get svc 
+ 1117  kubectl edit svc helloworld-db-service
+ 1118  kubectl get svc 
+ 1119  kubectl get pods 
+ 1120  kubectl exec -it database  -- mysql -u root -p 
+ 1121  kubectl run -it busybox --image=busybox --restart=Never -- /bin/sh
+ 1122  kubectl get ns 
+ 1123  kubectl get pod -n kube-system
+ 1124  history 
+ 1125  kubectl run -it alpine --image=alpine --restart=Never -- /bin/sh
+ 1126  kubectl get pods 
+ 1127  kubectl detele pod,deployment,svc --all
+ 1128  kubectl delete pod,deployment,svc --all
+ 1129  kubectl get svc 
+ 1130  kubectl get pod -n kube-system -o wide
+ 1131  ls
+ 1132  cd ..
+ 1133  ls
+ 1134  cp -rf ../../k8s-docker-20190819/K8s/07-ConfigMap . 
+ 1135  cp -rf ../../k8s-docker-20190819/K8s/07-Ingress 08-Ingress
+ 1136  ls
+ 1137  cd 07-ConfigMap/
+ 1138  ls
+ 1139  cat reverseproxy.conf 
+ 1140  cat nginx.yml 
+ 1141  kubectl create configmap  nginx-config  --from-file=./reverseproxy.conf 
+ 1142  kubectl get configmap
+ 1143  kubectl describe configmap nginx-config
+ 1144  ls
+ 1145  vim nginx.yml 
+ 1146  ls
+ 1147  cat nginx.yml 
+ 1148  cat nginx-service.yml 
+ 1149  vim nginx-service.yml 
+ 1150  ls
+ 1151  cd ..
+ 1152  kubectl create -f 07-ConfigMap/
+ 1153  kubectl get svc 
+ 1154  kubectl get pods 
+ 1155  kubectl desribe pod helloworld-nginx
+ 1156  kubectl decsribe pod helloworld-nginx
+ 1157  kubectl describe pod helloworld-nginx
+ 1158  kubectl get configmap
+ 1159  kubectl edit configmap nginx-config
+ 1160  ls
+ 1161  git add . ; git commit -m "ConfigMap"; git push origin master
+ 1162  history 
+ 1163  kubectl get pods 
+ 1164  kubectl describe pod helloworld-nginx
+ 1165  ls
+ 1166  kubectl delete -f 07-ConfigMap/
+ 1167  kubectl get configmaps 
+ 1168  kubectl delete configmaps  nginx-config
+ 1169  ls
+ 1170  kubectl get svc 
+ 1171  history 
+ 1172  ls
+ 1173  cd 08-Ingress/
+ 1174  ls
+ 1175  cat echoservice.yml 
+ 1176  ls
+ 1177  cat helloworld-v1.yml 
+ 1178  cat helloworld-v2.yml 
+ 1179  ls
+ 1180  cat ingress.yml 
+ 1181  cat helloworld-v1.yml 
+ 1182  ls
+ 1183  cat ingress.yml 
+ 1184  cat nginx-ingress-controller.yml 
+ 1185  ls
+ 1186  cd ..
+ 1187  ls
+ 1188  kubectl create -f 08-Ingress/
+ 1189  kubectl get svc 
+ 1190  kubectl get pods 
+ 1191  kubectl logs nginx-ingress-controller-6hh9r
+ 1192  kubectl logs -10 nginx-ingress-controller-6hh9r
+ 1193  kubectl logs -f  nginx-ingress-controller-6hh9r
+ 1194  kubectl get pods 
+ 1195  kubectl describe pod nginx-ingress-controller-6hh9r
+ 1196  l
+ 1197  sl
+ 1198  kubectl logs -f  nginx-ingress-controller-6hh9r
+ 1199  kubectl describe nginx-ingress-controller-6hh9r
+ 1200  kubectl describe pod nginx-ingress-controller-6hh9r
+ 1201  cd
+ 1202  history | grep -i clusterrole
+ 1203  kubectl create clusterrolebinding add-on-cluster-admin   --clusterrole=cluster-admin   --serviceaccount=kube-system:default
+ 1204  kubectl create clusterrolebinding add-on-cluster-admin-1   --clusterrole=cluster-admin   --serviceaccount=default:default
+ 1205  kubectl get pods 
+ 1206  kubectl delete pod nginx-ingress-controller-6hh9r
+ 1207  kubectl get pods 
+ 1208  kubectl get svc 
+ 1209  kubectl get pods -n kube-system
+ 1210  ls
+ 1211  kubectl get pods 
+ 1212  kubectl get svc 
+ 1213  kubectl expose pod nginx-ingress-controller-44qz7 --type=LoadBalancer
+ 1214  kubectl get svc 
+ 1215  curl http://35.222.101.217/ -H 'Host: helloworld-v2.example.com'
+ 1216  curl http://35.222.101.217/ -H 'Host: helloworld-v1.example.com'
+ 1217  curl http://35.222.101.217/ 
+ 1218  ls
+ 1219  cd k8s-docker-20190909/
+ 1220  ls
+ 1221  cd K8s/
+ 1222  ls
+ 1223  history > History_K8s_Day4.txt
