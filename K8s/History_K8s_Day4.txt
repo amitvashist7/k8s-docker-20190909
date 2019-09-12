@@ -1,0 +1,100 @@
+   82  kubectl delete svc wordpress-service
+   83  kubectl delete deployment --all
+   84  ls
+   85  git add . ; git commit -m "WordPress"; git push origin master 
+   86  ls
+   87  history 
+   88  ls
+   89  > K8s-history-2.txt 
+   90  vi K8s-history-2.txt 
+   91  ls
+   92  cp -rf ../../kubernetes-project/service-discovery 06-Service-discovery
+   93  ls
+   94  kubectl get ns 
+   95  kubectl get pods -n kube-system
+   96  ls
+   97  cd 06-Service-discovery/
+   98  ls
+   99  cat secrets.yml 
+  100  kubectl create -f secrets.yml 
+  101  ls
+  102  cat helloworld-db.yml 
+  103  ls
+  104  cat database.yml 
+  105  ls
+  106  kubectl create -f database.yml 
+  107  ls
+  108  cat database-service.yml 
+  109  kubectl get pods 
+  110  kubectl create -f database-service.yml 
+  111  kubectl get svc 
+  112  ls
+  113  cat helloworld-db.yml 
+  114  ls
+  115  kubectl create -f helloworld-db.yml
+  116  kubectl get pods 
+  117  ls
+  118  cat helloworld-db.yml 
+  119  ls
+  120  cat helloworld-db-service.yml 
+  121  kubectl create -f helloworld-db-service.yml
+  122  kubectl get svc 
+  123  kubectl edit svc helloworld-db-service 
+  124  kubectl get svc 
+  125  ls
+  126  cat helloworld-db.yml 
+  127  kubectl get svc 
+  128  kubectl run -it --image=busybox --restart=Never -- /bin/sh  
+  129  kubectl run -i --tty busynbox --image=busybox --restart=Never -- /bin/sh  
+  130  kubectl get svc 
+  131  kubectl get pods 
+  132  kubectl run -i --tty busynbox --image=busybox --restart=Never -- /bin/sh  
+  133  kubectl run -i --tty busybox --image=busybox --restart=Never -- /bin/sh  
+  134  ls
+  135  cd ..
+  136  ls
+  137  history 
+  138  ls
+  139  > K8s-history-2.txt 
+  140  vi K8s-history-2.txt 
+  141  git add . ; git commit -m "WordPress"; git push origin master 
+  142  kubectl get pods 
+  143  kubectl exec -it database  -- mysql -u root -p 
+  144  ls
+  145  l
+  146  kubectl get pods,deployments,svc,secrets
+  147  kubectl delete -f 06-Service-discovery/
+  148  kubectl get pods,deployments,svc,secrets
+  149  ls
+  150  kubectl pods 
+  151  kubectl get pods 
+  152  kubectl delete pods busybox    busynbox   
+  153  ls
+  154  cp -rf ../../kubernetes-project/configmap 07-ConfigMap
+  155  ls
+  156  cd 07-ConfigMap/
+  157  ls
+  158  cat reverseproxy.conf 
+  159  kubectl get configmap
+  160  cat nginx.yml 
+  161  kubectl create configmap nginx-config --from-file=reverseproxy.conf 
+  162  kubectl get configmap
+  163  kubectl describe configmap nginx-config
+  164  ls
+  165  vim nginx.yml 
+  166  ls
+  167  kubectl create -f nginx.yml 
+  168  kubectl get pods 
+  169  kubectl desribe pod helloworld-nginx
+  170  kubectl describe pod helloworld-nginx
+  171  ls
+  172  kubectl create -f nginx.yml 
+  173  kubectl create -f nginx-service.yml 
+  174  kubectl get svc 
+  175  kubectl edit svc helloworld-nginx-service
+  176  kubectl get svc 
+  177  ls
+  178  kubectl get svc 
+  179  ls
+  180  vim nginx.yml 
+  181  kubectl get pods 
