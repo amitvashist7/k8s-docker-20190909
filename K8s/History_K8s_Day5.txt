@@ -53,3 +53,103 @@
  1061  history | tail -50
  1062  history | tail -55
  1063  history | tail -55 > History_K8s_Day5.txt
+  934  cd istio-1.0.2/
+  935  ls
+  936  cd bin/
+  937  ls
+  938  pwd
+  939  grep -i istioctl ~/.profile 
+  940  echo 'export PATH="$PATH:/home/amitvashist7/istio-1.0.2/bin"' >> ~/.profile 
+  941  source ~/.profile 
+  942  cd
+  943  cd ~
+  944  istioctl --help
+  945  ls
+  946  kubectl get nodes 
+  947  history | grep -i clusterrolebinding
+  948  kubectl create clusterrolebinding cluster-admin-binding --clusterrole=cluster-admin  --user=$(gcloud config get-value core/account)
+  949  gcloud config get-value core/account
+  950  ls
+  951  cd k8s-docker-20190909/K8s/
+  952  ls
+  953  cd 10-Istio/
+  954  ls
+  955  vim README.md 
+  956  ls
+  957  cd ..
+  958  git add . ; git commit -m "Istio"; git push origin master
+  959  ls
+  960  cd 10-Istio/
+  961  ls
+  962  cat README.md 
+  963  ls
+  964  cd ..
+  965  ls
+  966  cd 
+  967  ls
+  968  cd istio-1.0.2/
+  969  ls
+  970  ls -lt install/kubernetes/helm/istio/templates/
+  971  kubectl apply -f  install/kubernetes/helm/istio/templates/crds.yaml 
+  972  ls
+  973  cd install/kubernetes/
+  974  ls
+  975  kubectl apply -f istio-demo.yaml 
+  976  cd ..
+  977  ls
+  978  history 
+  979  kubectl get ns 
+  980  kubectl get pods 
+  981  kubectl get ns -L istio-system
+  982  kubectl get pod -n istio-system 
+  983  ls
+  984  cd 
+  985  ls
+  986  kubectl get pods 
+  987  ls
+  988  kubectl get pod -n istio-system 
+  989  ls
+  990  cd k8s-docker-20190909/
+  991  ls
+  992  cd K8s/
+  993  ls
+  994  cd 10-Istio/
+  995  ls
+  996  cat helloworld.yaml 
+  997  ls
+  998  kubectl create -f helloworld.yaml 
+  999  kubectl get pods 
+ 1000  kubectl get deployments 
+ 1001  ls
+ 1002  cd k8s-docker-20190909/K8s/10-Istio/
+ 1003  ls
+ 1004  kubectl apply -f <(istioctl kube-inject -f helloworld.yaml)
+ 1005  kubectl get pods 
+ 1006  kubectl describe pod hello-5f6ffc8667-6jsqh
+ 1007  kubectl get svc 
+ 1008  kubectl delete svc cassandra    
+ 1009  kubectl get svc 
+ 1010  kubectl get pod -n istio-system 
+ 1011  kubectl get pod -n istio-system -o wide 
+ 1012  kubectl get svc -n istio-system  
+ 1013  curl 34.69.91.98/hello
+ 1014  curl http://34.69.91.98/hello
+ 1015  curl http://34.69.91.98
+ 1016  kubectl get svc -n istio-system  
+ 1017  curl http://34.69.91.98
+ 1018  curl http://34.69.91.98/hello
+ 1019  ls
+ 1020  cat helloworld-gw.yaml 
+ 1021  kubectl create -f helloworld-gw.yaml 
+ 1022  curl http://34.69.91.98/hello
+ 1023  cat helloworld-gw.yaml 
+ 1024  kubectl get svc 
+ 1025  ls
+ 1026  cd ../../
+ 1027  ls
+ 1028  cd K8s/
+ 1029  ls
+ 1030  history 
+ 1031  history | tail -50
+ 1032  history | tail -100
+ 1033  history | tail -100 >> History_K8s_Day5.txt 
