@@ -25,7 +25,7 @@ spec:
   - match:
     - headers:
         end-user:
-          exact: john
+          exact: vashist
     route:
     - destination:
         host: hello.default.svc.cluster.local
