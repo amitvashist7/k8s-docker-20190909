@@ -153,3 +153,103 @@
  1031  history | tail -50
  1032  history | tail -100
  1033  history | tail -100 >> History_K8s_Day5.txt 
+ 1040  ls
+ 1041  cd install/kubernetes/
+ 1042  ls
+ 1043  kubectl apply -f istio-demo.yaml 
+ 1044  cd ..
+ 1045  ls
+ 1046  history 
+ 1047  kubectl get ns 
+ 1048  kubectl get pods 
+ 1049  kubectl get ns -L istio-system
+ 1050  kubectl get pod -n istio-system 
+ 1051  ls
+ 1052  cd 
+ 1053  ls
+ 1054  kubectl get pods 
+ 1055  ls
+ 1056  kubectl get pod -n istio-system 
+ 1057  ls
+ 1058  cd k8s-docker-20190909/
+ 1059  ls
+ 1060  cd K8s/
+ 1061  ls
+ 1062  cd 10-Istio/
+ 1063  ls
+ 1064  cat helloworld.yaml 
+ 1065  ls
+ 1066  kubectl create -f helloworld.yaml 
+ 1067  kubectl get pods 
+ 1068  kubectl get deployments 
+ 1069  kubectl delete -f helloworld.yaml 
+ 1070  kubectl get pods 
+ 1071  watch -n .5 kubectl get pods 
+ 1072  kubectl get pods 
+ 1073  kubectl describe hpa hpa-example
+ 1074  kubectl get svc 
+ 1075  curl http://35.193.252.160:31001/
+ 1076  watch -n .5 kubectl get pods 
+ 1077  cd 
+ 1078  cd - 
+ 1079  ls
+ 1080  cd ..
+ 1081  ls
+ 1082  cd 11-Helm/
+ 1083  ls
+ 1084  cat README.md 
+ 1085  git add . ; git commit -m "Istio"; git push origin master
+ 1086  ls
+ 1087  cd ..
+ 1088  ls
+ 1089  git add . ; git commit -m "Autoscaling"; git push origin master
+ 1090  ls
+ 1091  cd 12-Autoscaling/
+ 1092  cd ../11-Helm/
+ 1093  ls
+ 1094  cat helm-rbac.yaml 
+ 1095  kubectl create -f helm-rbac.yaml 
+ 1096  cat README.md 
+ 1097  helm init --service-account tiller
+ 1098  cd 
+ 1099  helm search redis
+ 1100  kubectl get pods 
+ 1101  kubectl get pods -n kube-system
+ 1102  helm search redis
+ 1103  helm install stable/redis
+ 1104  kubectl get pods,deployments,rs,svc,statefulset
+ 1105  ls
+ 1106  helm list 
+ 1107* helm 
+ 1108  helm list 
+ 1109  helm delete brown-snake
+ 1110  helm list 
+ 1111  helm install stable/redis --help
+ 1112  helm install stable/redis -n myredis-1.0
+ 1113  helm install stable/redis -n myredis-1
+ 1114  kubectl get pods 
+ 1115  helm --help
+ 1116  helm list 
+ 1117  helm upgrdae myredis-1
+ 1118  helm upgrade myredis-1
+ 1119  helm rollback myredis-1
+ 1120  ls
+ 1121  cd k8s-docker-20190909/
+ 1122  ls
+ 1123  cd K8s/
+ 1124  ls
+ 1125  cd 11-Helm/
+ 1126  ls
+ 1127  cd demo-chart/
+ 1128  ls
+ 1129  cat Chart.yaml 
+ 1130  ls
+ 1131  cat requirements.yaml 
+ 1132  ls
+ 1133  cat values.yaml 
+ 1134  ls
+ 1135  cd ..
+ 1136  ls
+ 1137  cd ..
+ 1138  ls
+ 1139  history | tail -100 >> History_K8s_Day5.txt 
