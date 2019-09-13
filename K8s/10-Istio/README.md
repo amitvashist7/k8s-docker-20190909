@@ -27,15 +27,20 @@ cd ~
 wget https://github.com/istio/istio/releases/download/1.0.2/istio-1.0.2-linux.tar.gz
 tar -xzvf istio-1.0.2-linux.tar.gz
 cd istio-1.0.2
-echo 'export PATH="$PATH:/home/ubuntu/istio-1.0.2/bin"' >> ~/.profile
+echo 'export PATH="$PATH:/youruserhomedir/istio-1.0.2/bin"' >> ~/.profile
 ```
 
-## Download (latest):
+``` 
+Apply Cluster RoleBinding
+
+kubectl create clusterrolebinding cluster-admin-binding --clusterrole=cluster-admin  --user=$(gcloud config get-value core/account)
+
+
 ```
-cd ~
-curl -L https://git.io/getLatestIstio | sh -
-echo 'export PATH="$PATH:/home/ubuntu/istio-1.0.2/bin"' >> ~/.profile # change 1.0.2 in your version
-cd istio-1.0.2 # change 1.0.2 in your version
+
+
+```
+
 ```
 
 ## Istio install
