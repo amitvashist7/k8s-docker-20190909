@@ -1,0 +1,55 @@
+ 1009  ls
+ 1010  kubectl create -f helloworld-stateful.yaml 
+ 1011  kubectl get pods 
+ 1012  gcloud container clusters get-credentials k8s-cluster --zone us-central1-a --project sapient-office-218912
+ 1013  kubectl get pods 
+ 1014  kubectl create -f helloworld-stateful.yaml 
+ 1015  kubectl get pods 
+ 1016  source <(kubectl completion bash)
+ 1017  kubectl get statefulsets
+ 1018  kubectl get rs 
+ 1019  kubectl get rc
+ 1020  kubectl get statefulsets
+ 1021  kubectl scale --replicas=10 statefulsets helloworld-statefull
+ 1022  kubectl scale --replicas=2 statefulsets helloworld-statefull
+ 1023  kubectl delete pod helloworld-statefull-0
+ 1024  kubectl scale --replicas=5 statefulsets helloworld-statefull
+ 1025  kubectl delete pod helloworld-statefull-0
+ 1026  kubectl edit pod helloworld-statefull-0
+ 1027  kubectl edit statefulsets helloworld-statefull
+ 1028  kubectl describe statefulsets.apps 
+ 1029  kubectl get statefulsets
+ 1030  kubectl set image statefulsets helloworld-statefull k8s-demo=amitvashist7/k8s-tiny-web:1
+ 1031  kubectl set image statefulsets helloworld-statefull k8s-demo=amitvashist7/k8s-tiny-web:2
+ 1032  kubectl delete pod helloworld-statefull-4
+ 1033  kubectl get rs
+ 1034  kubectl get pods 
+ 1035  kubectl describe pod helloworld-statefull-0
+ 1036  ls
+ 1037  vim cassandra.yaml 
+ 1038  kubectl create -f cassandra.yaml 
+ 1039  kubectl get pods 
+ 1040  kubectl delete statefullset helloworld-statefull
+ 1041  kubectl delete statefulsets helloworld-statefull
+ 1042  kubectl get pods 
+ 1043  kubectl get pv 
+ 1044  kubectl get pods 
+ 1045  kubectl exec it cassandra-0 -- nodetool status
+ 1046  kubectl exec -it cassandra-0 -- nodetool status
+ 1047  kubectl exec -it cassandra-0 -- bash
+ 1048  kubectl get pods 
+ 1049  kubectl get pvc 
+ 1050* kubectl get pods 
+ 1051  kubectl get statefulset
+ 1052  kubectl delete statefulset cassandra
+ 1053  ls
+ 1054  kubectl get pv 
+ 1055  kubectl pvc 
+ 1056  kubectl get  pvc 
+ 1057  kubectl delete pvc cassandra-data-cassandra-0 cassandra-data-cassandra-1 cassandra-data-cassandra-2
+ 1058  kubectl get  pv
+ 1059  cd ..
+ 1060  ls
+ 1061  history | tail -50
+ 1062  history | tail -55
+ 1063  history | tail -55 > History_K8s_Day5.txt
